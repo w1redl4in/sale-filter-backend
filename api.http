@@ -1,0 +1,5 @@
+### Hello World
+GET http://localhost:3000/
+
+### List all bots
+GET http://localhost:3000/bots
