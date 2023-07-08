@@ -1,14 +1,22 @@
 import { BotRepository } from '../repositories/BotRepository';
 import { CreateBotUseCase } from './CreateBot';
+import { ValidateIfBotAlreadyExistsUseCase } from './ValidateIfBotAlreadyExists';
 import { InMemoryBotRepository } from './in-memory/InMemoryBotRepository';
 
 let botRepository: BotRepository;
 let createBotUseCase: CreateBotUseCase;
+let validateIfBotAlreadyExistsUseCase: ValidateIfBotAlreadyExistsUseCase;
 
 describe('CreateBot - UseCase', () => {
   beforeEach(() => {
     botRepository = new InMemoryBotRepository();
-    createBotUseCase = new CreateBotUseCase(botRepository);
+    validateIfBotAlreadyExistsUseCase = new ValidateIfBotAlreadyExistsUseCase(
+      botRepository,
+    );
+    createBotUseCase = new CreateBotUseCase(
+      botRepository,
+      validateIfBotAlreadyExistsUseCase,
+    );
   });
 
   it('should be able to create a new bot', async () => {

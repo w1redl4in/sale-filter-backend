@@ -1,6 +1,7 @@
 import { Either, left } from '../../../core/logic/Either';
 import { Bot } from '../domain/bot';
 import { BotRepository } from '../repositories/BotRepository';
+import { ValidateIfBotAlreadyExistsUseCase } from './ValidateIfBotAlreadyExists';
 import { BotAlreadyExistsError } from './errors/bot-already-exists-error';
 import { InvalidNameOrChannelIdError } from './errors/invalid-name-or-channel-id-error';
 
@@ -10,16 +11,20 @@ interface CreateBotDTO {
 }
 
 export class CreateBotUseCase {
-  constructor(private botRepository: BotRepository) {}
+  constructor(
+    private botRepository: BotRepository,
+    private validateIfBotAlreadyExistsUseCase: ValidateIfBotAlreadyExistsUseCase,
+  ) {}
 
   async execute(
     props: CreateBotDTO,
   ): Promise<Either<InvalidNameOrChannelIdError, Bot>> {
     const { name, channelId } = props;
 
-    const botAlreadyExists = await this.botRepository.findByChannelId(
-      channelId,
-    );
+    const botAlreadyExists =
+      await this.validateIfBotAlreadyExistsUseCase.execute({
+        channelId,
+      });
 
     if (botAlreadyExists) {
       return left(new BotAlreadyExistsError());
