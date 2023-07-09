@@ -6,7 +6,7 @@ import { InvalidWebhookUrlError } from './errors/invalid-webhook-error';
 interface DiscordProps {
   webhookUrl: string;
   discordName: string;
-  keys?: string[];
+  keys?: string;
 }
 
 export class Discord extends Entity<DiscordProps> {

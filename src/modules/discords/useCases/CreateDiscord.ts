@@ -16,7 +16,13 @@ export class CreateDiscordUseCase {
   ): Promise<Either<InvalidWebhookUrlOrDiscordNameError, Discord>> {
     const { webhookUrl, discordName, keys } = props;
 
-    const discord = Discord.create({ webhookUrl, discordName, keys });
+    const stringKeys = keys?.join(', ');
+
+    const discord = Discord.create({
+      webhookUrl,
+      discordName,
+      keys: stringKeys,
+    });
 
     if (discord.isLeft()) {
       return left(new InvalidWebhookUrlOrDiscordNameError());
