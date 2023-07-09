@@ -9,6 +9,19 @@ POST http://localhost:3000/bots
 Content-Type: application/json
 
 {
-  "name": "Bot 1",
-  "channelId": "Bot 1 description"
+  "name": "GPU Bipolar",
+  "channelId": "gpubipolar_so_placas"
 }
+
+### Create a discord
+POST http://localhost:3000/discords
+Content-Type: application/json
+
+{
+  "webhookUrl": "https://discord.com/api/webhooks/1126741845557379152/L3TG5WG7giPOrdaqoY_zEWxcDb3iQxGsIqUVD0a3kTSjsA84Q4uizOUTcy6W8weHJpZM",
+  "discordName": "Vanir",
+  "keys": ["4070 Ti", "3060", "Ultrawide"]
+}
+
+### Get all discords
+GET http://localhost:3000/discords
