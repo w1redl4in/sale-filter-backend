@@ -3,3 +3,12 @@ GET http://localhost:3000/
 
 ### List all bots
 GET http://localhost:3000/bots
+
+### Create a bot
+POST http://localhost:3000/bots
+Content-Type: application/json
+
+{
+  "name": "Bot 1",
+  "channelId": "Bot 1 description"
+}
