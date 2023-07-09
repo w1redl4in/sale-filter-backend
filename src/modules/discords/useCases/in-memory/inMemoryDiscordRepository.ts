@@ -6,10 +6,10 @@ export class InMemoryDiscordRepository implements DiscordRepository {
   async create(discord: Discord): Promise<void> {
     this.items.push(discord);
   }
-  listAllDiscords(): Discord[] {
+  async listAllDiscords(): Promise<Discord[]> {
     return this.items;
   }
-  findById(id: string): Discord | undefined {
+  async findById(id: string): Promise<Discord | undefined> {
     return this.items.find((discord) => discord.id === id);
   }
 }

@@ -1,7 +1,7 @@
-import { Discord } from '../domain/discord';
+import { DiscordEntity } from 'src/infra/db/typeorm/Discord.entity';
 
 export interface DiscordRepository {
-  create(bot: Discord): Promise<void>;
-  listAllDiscords(): Discord[];
-  findById(id: string): Discord | undefined;
+  create(bot: DiscordEntity): Promise<void>;
+  listAllDiscords(): Promise<DiscordEntity[]>;
+  findById(id: string): Promise<DiscordEntity | undefined>;
 }

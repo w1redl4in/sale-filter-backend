@@ -3,7 +3,7 @@ import { Discord } from './discord';
 import { InvalidWebhookUrlError } from './errors/invalid-webhook-error';
 
 describe('Discord Domain', () => {
-  const keys = ['4070 Ti', '3060 Ti'];
+  const keys = ['4070 Ti', '3060 Ti'].join(', ');
   const discordName = 'Discord Server Name';
   const webhookUrl = 'https://discord.com/mockWebhookUrl';
 
