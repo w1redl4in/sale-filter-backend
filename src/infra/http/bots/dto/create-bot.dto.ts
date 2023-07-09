@@ -1,1 +1,4 @@
-export class CreateBotDto {}
+export class CreateBotDto {
+  name: string;
+  channelId: string;
+}
